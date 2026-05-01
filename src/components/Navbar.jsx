@@ -13,7 +13,9 @@ function Navbar() {
         <Link to="/planner">Planner</Link>
         <Link to="/desempenho">Desempenho</Link>
         <Link to="/desafios">Desafios</Link>
+        <Link to="/admin">Entrar</Link>
         <a href="#perfil">Perfil</a>
+
       </nav>
 
       <div className="user">
