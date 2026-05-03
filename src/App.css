@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Capriola&family=Open+Sans:wght@400;600&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins;
 }
 
 body{
 background:#DDF1FA;
 color:#1c2c4c;
+font-family: 'Open Sans', sans-serif;
 }
 
 body::before{
@@ -23,7 +23,9 @@ top:0;
 left:0;
 z-index:1000;
 }
-
+h1, h2, h3 {
+  font-family: 'Capriola', sans-serif;
+}
 /* NAVBAR */
 
 .navbar{
@@ -33,101 +35,13 @@ align-items:center;
 padding:20px 80px;
 background:white;
 margin-top:8px;
-}
-.avatar-click {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.avatar-click:hover {
-  transform: scale(1.1);
-}
-/* AVATAR */
-.avatar-click {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* DROPDOWN */
-.dropdown {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background: #f2f2f2;
-  border-radius: 12px;
-  padding: 15px;
-  width: 180px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* NOME */
-.user-name {
-  font-weight: bold;
-  color: #0d3b75;
-  font-size: 14px;
-}
-
-/* BOTÕES */
-.dropdown button {
-  background: transparent;
-  border: none;
-  text-align: left;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.dropdown button:hover {
-  background: #dbe9f4;
-}
-
-/* LOGOUT */
-.dropdown .logout {
-  color: #ff4d4d;
-}
-/* BOTÃO LOGIN */
-.login-btn {
-  background-color: #ffd24d;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-/* BOTÃO LOGOUT */
-.logout-btn {
-  margin-left: 10px;
-  background-color: transparent;
-  border: 1px solid #fff;
-  padding: 6px 12px;
-  border-radius: 15px;
-  color: white;
-  cursor: pointer;
+font-family: 'Capriola', sans-serif;
 }
 
 .logo{
 display:flex;
 align-items:center;
-gap:10px;
-font-weight:600;
-font-size:22px;
-color:#f59a3c;
-}
-
-.logo{
-display:flex;
-align-items:center;
+text-decoration:none;
 }
 
 .logo-img{
@@ -135,83 +49,145 @@ height:50px;
 object-fit:contain;
 }
 
+/* MENU */
+
 .menu{
 display:flex;
 gap:30px;
 }
 
-.menu a{
-color:#222;
+/* 🔥 NOVO NAVLINK */
+.menu .nav-item{
 text-decoration:none;
+color:#1c2c4c;
 font-weight:500;
+position:relative;
+padding-bottom:5px;
+transition:0.2s;
 }
 
-.menu a:hover{
-color:#3f7fe3;
-}
-
-.menu .active{
+.menu .nav-item:hover{
 color:#f59a3c;
-border-bottom:2px solid #f59a3c;
-padding-bottom:3px;
 }
 
-.logo{
-text-decoration:none;
-display:flex;
-align-items:center;
+/* ATIVO */
+.menu .nav-item.active{
+color:#f59a3c;
+font-weight:600;
 }
+
+/* LINHA ABAIXO */
+.menu .nav-item.active::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-4px;
+width:100%;
+height:3px;
+background:#f59a3c;
+border-radius:2px;
+}
+
+/* USER */
 
 .user{
 display:flex;
 align-items:center;
 gap:18px;
+position:relative;
 }
 
-.user img{
+/* AVATAR */
+
+.avatar-click{
+width:40px;
+height:40px;
 border-radius:50%;
-}
-
-/* HERO */
-
-.hero{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:90px 80px;
-margin-top:70px;
-}
-
-.hero-text{
-max-width:520px;
-}
-
-.hero-text h1{
-font-size:42px;
-font-weight:600;
-color:#163a6b;
-}
-
-.hero-text p{
-margin:20px 0;
-color:#555;
-line-height:1.6;
-}
-
-.hero-img{
-width:420px;
-border-radius:12px;
-}
-
-.btn-primary{
-background:#3f7fe3;
-border:none;
-color:white;
-padding:12px 26px;
-border-radius:25px;
-font-size:15px;
 cursor:pointer;
+transition:0.2s;
 }
+
+.avatar-click:hover{
+transform:scale(1.1);
+}
+
+/* DROPDOWN */
+
+.dropdown{
+position:absolute;
+top:65px;
+right:0;
+background:#f2f2f2;
+border-radius:12px;
+padding:15px;
+width:180px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+
+display:flex;
+flex-direction:column;
+gap:10px;
+
+animation:fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(-5px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* NOME */
+
+.user-name{
+font-weight:bold;
+color:#0d3b75;
+font-size:14px;
+}
+
+/* BOTÕES DROPDOWN */
+
+.dropdown button{
+background:transparent;
+border:none;
+text-align:left;
+padding:8px;
+border-radius:8px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.dropdown button:hover{
+background:#dbe9f4;
+}
+
+/* LOGOUT */
+
+.dropdown .logout{
+color:#ff4d4d;
+}
+
+/* LOGIN */
+
+.login-btn{
+background:#f59a3c;
+color:white;
+border:none;
+padding:8px 18px;
+border-radius:20px;
+cursor:pointer;
+font-weight:600;
+transition:0.2s;
+}
+
+.login-btn:hover{
+transform:scale(1.05);
+}
+
 
 /* TOOLS */
 

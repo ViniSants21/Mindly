@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState, useRef, useEffect } from "react";
 
@@ -14,7 +14,7 @@ function Navbar() {
     navigate("/login");
   };
 
-  // fechar ao clicar fora
+  // fechar dropdown ao clicar fora
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -30,16 +30,31 @@ function Navbar() {
     <header className="navbar">
 
       {/* LOGO */}
-      <Link to="/" className="logo">
-        <img src="/images/mindly-logo.png" alt="Logo Mindly" className="logo-img" />
-      </Link>
+      <NavLink to="/" className="logo">
+        <img
+          src="/images/mindly-logo.png"
+          alt="Logo Mindly"
+          className="logo-img"
+        />
+      </NavLink>
 
       {/* MENU */}
       <nav className="menu">
-        <Link to="/">Início</Link>
-        <Link to="/planner">Planner</Link>
-        <Link to="/desempenho">Desempenho</Link>
-        <Link to="/desafios">Desafios</Link>
+        <NavLink to="/" end className="nav-item">
+          Início
+        </NavLink>
+
+        <NavLink to="/planner" className="nav-item">
+          Planner
+        </NavLink>
+
+        <NavLink to="/desempenho" className="nav-item">
+          Desempenho
+        </NavLink>
+
+        <NavLink to="/desafios" className="nav-item">
+          Desafios
+        </NavLink>
       </nav>
 
       {/* USER */}
