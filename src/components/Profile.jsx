@@ -3,8 +3,13 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
     <div className="profile-page">
@@ -37,13 +42,22 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* BOTÃO EDITAR */}
-        <button
-          className="edit-btn"
-          onClick={() => navigate("/editar-perfil")}
-        >
-          Editar dados
-        </button>
+        {/* BOTÕES */}
+        <div className="profile-actions">
+          <button
+            className="edit-btn"
+            onClick={() => navigate("/editar-perfil")}
+          >
+            Editar dados
+          </button>
+
+          <button
+            className="logout-btn-profile"
+            onClick={handleLogout}
+          >
+            Sair
+          </button>
+        </div>
       </div>
 
       {/* SEÇÃO INFERIOR */}

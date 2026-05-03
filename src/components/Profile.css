@@ -162,3 +162,24 @@ hr {
   font-size: 12px;
   margin-top: 5px;
 }
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* BOTÃO SAIR */
+.logout-btn-profile {
+  background-color: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn-profile:hover {
+  background-color: #ff4d4d;
+  color: white;
+}

@@ -1,14 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useState, useRef, useEffect } from "react";
 
 function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef();
+
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
+
+  // fechar ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <header className="navbar">
@@ -27,22 +43,39 @@ function Navbar() {
       </nav>
 
       {/* USER */}
-      <div className="user">
+      <div className="user" ref={menuRef}>
         {user ? (
           <>
             <span className="bell">🔔</span>
 
-            {/* 🔥 CLICÁVEL */}
+            {/* AVATAR */}
             <img
               src={user.photo || "https://i.pravatar.cc/40"}
               alt="user"
               className="avatar-click"
-              onClick={() => navigate("/perfil")}
+              onClick={() => setOpen(!open)}
             />
 
-            <button className="logout-btn" onClick={handleLogout}>
-              Sair
-            </button>
+            {/* DROPDOWN */}
+            {open && (
+              <div className="dropdown">
+                <p className="user-name">
+                  {user.name || user.email}
+                </p>
+
+                <button onClick={() => navigate("/perfil")}>
+                  Perfil
+                </button>
+
+                <button onClick={() => navigate("/editar-perfil")}>
+                  Editar perfil
+                </button>
+
+                <button className="logout" onClick={handleLogout}>
+                  Sair
+                </button>
+              </div>
+            )}
           </>
         ) : (
           <button
