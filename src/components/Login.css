@@ -1,0 +1,107 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* LADO ESQUERDO */
+.login-left {
+  flex: 1;
+  background-color: #0d3b75;
+  color: white;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-left h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffd24d;
+  margin-bottom: 10px;
+}
+
+.login-left p {
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.login-form input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #2f5c8f;
+  color: white;
+  outline: none;
+}
+
+.login-form input::placeholder {
+  color: #cfd8dc;
+}
+
+.forgot {
+  font-size: 12px;
+  color: #ffd24d;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* BOTÃO ENTRAR */
+.btn-primary {
+  background-color: #ffd24d;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* BOTÃO GOOGLE */
+.btn-google {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  padding: 12px;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+/* TEXTO FINAL */
+.register {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #ffd24d;
+}
+
+/* LADO DIREITO */
+.login-right {
+  flex: 1;
+  background-color: #b7d1df;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  color: #0d3b75;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.login-right img {
+  width: 250px;
+}

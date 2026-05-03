@@ -1,4 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import PrivateRoute from "./components/PrivateRoute";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Tools from "./components/Tools";
@@ -10,7 +13,9 @@ import Planner from "./components/Planner";
 import Performance from "./components/Performance";
 import Challenges from "./components/Challenges";
 import Footer from "./components/Footer";
-import './App.css';
+import Login from "./components/Login";
+
+import "./App.css";
 
 const Home = () => (
   <>
@@ -23,18 +28,62 @@ const Home = () => (
   </>
 );
 
-function App() {
+function Layout() {
+  const location = useLocation();
+  const noLayoutRoutes = ["/login"];
+  const hideLayout = noLayoutRoutes.includes(location.pathname);
+
   return (
-    <BrowserRouter>
-      <Navbar />
+    <>
+      {!hideLayout && <Navbar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/planner" element={<Planner />} />
-        <Route path="/desempenho" element={<Performance />} />
-        <Route path="/desafios" element={<Challenges />} />
+
+        {/* 🔐 ROTAS PROTEGIDAS */}
+        <Route
+          path="/planner"
+          element={
+            <PrivateRoute>
+              <Planner />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/desempenho"
+          element={
+            <PrivateRoute>
+              <Performance />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/desafios"
+          element={
+            <PrivateRoute>
+              <Challenges />
+            </PrivateRoute>
+          }
+        />
+
+        {/* LOGIN */}
+        <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer />
-    </BrowserRouter>
+
+      {!hideLayout && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Layout />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
