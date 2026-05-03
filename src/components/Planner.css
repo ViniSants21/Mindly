@@ -1,7 +1,7 @@
 .planner {
-  background-color: #c9dbe6;
-  padding: 40px 20px;
+  background: #c9dbe6;
   min-height: 100vh;
+  padding: 40px 20px;
   font-family: Arial, sans-serif;
 }
 
@@ -12,31 +12,23 @@
 
 h1 {
   color: #1e3a5f;
-  font-size: 28px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
-/* ===== DIAS ===== */
-
-.days-selector p {
-  margin-bottom: 10px;
-  color: #1e3a5f;
-}
-
+/* DIAS */
 .days-buttons {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .day-btn {
-  border: 2px solid #3b82f6;
-  background: transparent;
   padding: 6px 14px;
   border-radius: 20px;
+  border: 2px solid #3b82f6;
+  background: transparent;
   color: #3b82f6;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .day-btn.active {
@@ -44,36 +36,20 @@ h1 {
   color: white;
 }
 
-/* ===== CARD ===== */
-
-.study-hours {
-  margin-top: 30px;
-}
-
-.study-hours h2 {
-  margin-bottom: 15px;
-  color: #1e3a5f;
-}
-
+/* LISTA */
 .schedule-list {
   background: #eaeaea;
-  padding: 25px;
+  padding: 20px;
   border-radius: 20px;
+  margin-top: 20px;
 }
-
-/* ===== ITEM ===== */
 
 .schedule-item {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-  padding: 12px 0;
+  gap: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid #ccc;
-}
-
-.schedule-item:last-child {
-  border-bottom: none;
 }
 
 .time {
@@ -82,25 +58,28 @@ h1 {
 }
 
 .subject {
-  color: white;
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 20px;
-  font-size: 14px;
+  color: white;
 }
 
-/* ===== BOTÕES ===== */
+.empty {
+  text-align: center;
+  color: #555;
+}
 
+/* BOTÕES */
 .actions {
   margin-top: 20px;
   display: flex;
-  gap: 15px;
+  gap: 10px;
 }
 
 .btn-add {
   background: #3b82f6;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 20px;
   cursor: pointer;
 }
@@ -109,15 +88,175 @@ h1 {
   background: transparent;
   border: 2px solid #3b82f6;
   color: #3b82f6;
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 20px;
   cursor: pointer;
 }
 
-/* ===== DICA ===== */
+/* MINI BOTÕES */
+.actions-mini {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
 
-.tip {
-  margin-top: 15px;
-  font-size: 13px;
+.btn-icon {
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid #3b82f6;
+  background: transparent;
+  color: #3b82f6;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-icon:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-icon.danger {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.btn-icon.danger:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* TIMER */
+.timer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
   color: #1e3a5f;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15,23,42,0.4);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background: #3b82f6;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  margin-left: 10px;
+}
+
+.pause-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pause-options button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #3b82f6;
+  background: transparent;
+  color: #3b82f6;
+  cursor: pointer;
+}
+/* TIMER FULLSCREEN */
+.timer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15,23,42,0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.timer-box {
+  background: white;
+  padding: 50px;
+  border-radius: 25px;
+  text-align: center;
+  width: 380px;
+}
+
+.timer-big {
+  font-size: 70px;
+  font-weight: bold;
+  color: #3b82f6;
+  display: block;
+  margin: 25px 0;
+}
+
+/* 🔴 últimos 10s */
+.timer-big.ending {
+  color: #ef4444;
+}
+
+.btn-stop {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.btn-stop:hover {
+  background: #dc2626;
 }
