@@ -1,3 +1,8 @@
+import "./tools.css";
+import plannerIcon from "../assets/iconeplanner.png";
+import graficoIcon from "../assets/iconegrafico.png";
+import trofeuIcon from "../assets/iconetrofeu.png";
+
 function Tools() {
   return (
     <section className="tools">
@@ -9,11 +14,13 @@ function Tools() {
 
       <div className="tool-grid">
 
+        {/* CARD 1 */}
         <div className="tool-card">
-          <div className="tool-icon">📅</div>
+          <div className="tool-header">
+          <img src={plannerIcon} alt="planner" className="tool-icon" />
 
           <h3>Planner inteligente</h3>
-
+        </div>
           <p>
             Monte horários personalizados com blocos de
             tempo, pausas automáticas e prioridades visuais.
@@ -24,11 +31,13 @@ function Tools() {
           </button>
         </div>
 
+        {/* CARD 2 */}
         <div className="tool-card">
-          <div className="tool-icon">📊</div>
+           <div className="tool-header">
+          <img src={graficoIcon} alt="grafico" className="tool-icon" />
 
           <h3>Desempenho</h3>
-
+        </div>
           <p>
             Gráficos detalhados de horas estudadas,
             metas cumpridas e evolução por disciplina.
@@ -39,11 +48,13 @@ function Tools() {
           </button>
         </div>
 
+        {/* CARD 3 */}
         <div className="tool-card">
-          <div className="tool-icon">🏆</div>
+          <div className="tool-header">
+          <img src={trofeuIcon} alt="trofeu" className="tool-icon" />
 
           <h3>Desafios</h3>
-
+        </div>
           <p>
             Missões curtas para manter a motivação:
             recompensas em XP e conquistas.

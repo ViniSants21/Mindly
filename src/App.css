@@ -188,62 +188,6 @@ transition:0.2s;
 transform:scale(1.05);
 }
 
-
-/* TOOLS */
-
-.tools{
-padding:60px 80px;
-}
-
-.tools-title{
-display:flex;
-align-items:center;
-gap:15px;
-margin-bottom:40px;
-}
-
-.bar{
-width:6px;
-height:30px;
-background:#f59a3c;
-}
-
-.tool-grid{
-display:flex;
-gap:30px;
-}
-
-.tool-card{
-background:white;
-padding:30px;
-border-radius:18px;
-width:300px;
-box-shadow:0 8px 18px rgba(0,0,0,0.15);
-}
-
-.tool-icon{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.tool-card h3{
-margin-bottom:10px;
-}
-
-.tool-card p{
-font-size:14px;
-color:#555;
-}
-
-.btn-outline{
-margin-top:18px;
-padding:9px 20px;
-border-radius:25px;
-border:2px solid #3f7fe3;
-background:none;
-cursor:pointer;
-}
-
 /* ABOUT */
 
 .about{
