@@ -34,8 +34,13 @@ export default function Profile() {
             <div className="xp-fill"></div>
           </div>
         </div>
+            import { useNavigate } from "react-router-dom";
 
-        <button className="edit-btn">Editar dados</button>
+            const navigate = useNavigate();
+
+            <button className="edit-btn" onClick={() => navigate("/editar-perfil")}>
+                 Editar dados
+            </button>
       </div>
 
       {/* SEÇÃO INFERIOR */}

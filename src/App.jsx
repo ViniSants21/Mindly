@@ -13,8 +13,11 @@ import Planner from "./components/Planner";
 import Performance from "./components/Performance";
 import Challenges from "./components/Challenges";
 import Footer from "./components/Footer";
+
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Profile from "./components/Profile";
+import EditProfile from "./components/EditProfile";
 
 import "./App.css";
 
@@ -31,6 +34,8 @@ const Home = () => (
 
 function Layout() {
   const location = useLocation();
+
+  // Páginas sem Navbar/Footer
   const noLayoutRoutes = ["/login", "/cadastro"];
   const hideLayout = noLayoutRoutes.includes(location.pathname);
 
@@ -39,8 +44,10 @@ function Layout() {
       {!hideLayout && <Navbar />}
 
       <Routes>
+        {/* HOME */}
         <Route path="/" element={<Home />} />
 
+        {/* ROTAS PROTEGIDAS */}
         <Route
           path="/planner"
           element={
@@ -68,6 +75,25 @@ function Layout() {
           }
         />
 
+        <Route
+          path="/perfil"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/editar-perfil"
+          element={
+            <PrivateRoute>
+              <EditProfile />
+            </PrivateRoute>
+          }
+        />
+
+        {/* LOGIN / CADASTRO */}
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Register />} />
       </Routes>

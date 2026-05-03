@@ -1,0 +1,103 @@
+.edit-profile-page {
+  background-color: #b7d1df;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+/* HEADER IGUAL AO PROFILE */
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-header .bar {
+  width: 6px;
+  height: 30px;
+  background-color: #ff8c2b;
+  margin-right: 10px;
+}
+
+.profile-header h1 {
+  color: #0d3b75;
+}
+
+/* CARD */
+.edit-card {
+  background: #f2f2f2;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+/* AVATAR */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* INPUT AVATAR */
+.avatar-section input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background-color: #2f5c8f;
+  color: white;
+  outline: none;
+}
+
+/* FORM */
+.edit-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #0d3b75;
+}
+
+.edit-form input {
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #2f5c8f;
+  color: white;
+  outline: none;
+}
+
+/* BOTÕES */
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel {
+  background: transparent;
+  border: 1px solid #2f7de1;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.save {
+  background-color: #ffd24d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}

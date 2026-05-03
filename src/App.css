@@ -34,7 +34,17 @@ padding:20px 80px;
 background:white;
 margin-top:8px;
 }
+.avatar-click {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
+.avatar-click:hover {
+  transform: scale(1.1);
+}
 /* BOTÃO LOGIN */
 .login-btn {
   background-color: #ffd24d;
