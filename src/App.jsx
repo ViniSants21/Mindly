@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 
 import Navbar from "./components/Navbar";
@@ -17,10 +17,12 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
+import AdminProfile from "./components/AdminProfile"; // 🔥 NOVO
 import EditProfile from "./components/EditProfile";
 
 import "./App.css";
 
+/* HOME */
 const Home = () => (
   <>
     <Hero />
@@ -34,6 +36,7 @@ const Home = () => (
 
 function Layout() {
   const location = useLocation();
+  const { user } = useAuth(); // 🔥 pega usuário
 
   // Páginas sem Navbar/Footer
   const noLayoutRoutes = ["/login", "/cadastro"];
@@ -44,6 +47,7 @@ function Layout() {
       {!hideLayout && <Navbar />}
 
       <Routes>
+
         {/* HOME */}
         <Route path="/" element={<Home />} />
 
@@ -75,11 +79,26 @@ function Layout() {
           }
         />
 
+        {/* 🔥 PERFIL DINÂMICO */}
         <Route
           path="/perfil"
           element={
             <PrivateRoute>
-              <Profile />
+              {user?.role === "admin" ? <AdminProfile /> : <Profile />}
+            </PrivateRoute>
+          }
+        />
+
+        {/* 🔥 (OPCIONAL) ROTA SÓ PRA ADMIN */}
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              {user?.role === "admin" ? (
+                <AdminProfile />
+              ) : (
+                <Profile />
+              )}
             </PrivateRoute>
           }
         />
@@ -96,6 +115,7 @@ function Layout() {
         {/* LOGIN / CADASTRO */}
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Register />} />
+
       </Routes>
 
       {!hideLayout && <Footer />}

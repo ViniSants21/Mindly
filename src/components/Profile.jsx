@@ -1,8 +1,10 @@
 import "./Profile.css";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="profile-page">
@@ -34,13 +36,14 @@ export default function Profile() {
             <div className="xp-fill"></div>
           </div>
         </div>
-            import { useNavigate } from "react-router-dom";
 
-            const navigate = useNavigate();
-
-            <button className="edit-btn" onClick={() => navigate("/editar-perfil")}>
-                 Editar dados
-            </button>
+        {/* BOTÃO EDITAR */}
+        <button
+          className="edit-btn"
+          onClick={() => navigate("/editar-perfil")}
+        >
+          Editar dados
+        </button>
       </div>
 
       {/* SEÇÃO INFERIOR */}
@@ -51,7 +54,7 @@ export default function Profile() {
           <h3>Continue aprendendo</h3>
 
           <div className="learning-item">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" />
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
             <div>
               <p>Matemática Básica</p>
               <div className="progress-bar">
@@ -63,7 +66,7 @@ export default function Profile() {
           <hr />
 
           <div className="learning-item">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" />
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="" />
             <div>
               <p>Interpretação de texto</p>
               <div className="progress-bar">
