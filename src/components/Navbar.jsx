@@ -13,29 +13,30 @@ function Navbar() {
   return (
     <header className="navbar">
 
-      {/* LOGO */}
       <Link to="/" className="logo">
-        <img
-          src="/images/mindly-logo.png"
-          alt="Logo Mindly"
-          className="logo-img"
-        />
+        <img src="/images/mindly-logo.png" alt="Logo Mindly" className="logo-img" />
       </Link>
 
-      {/* MENU */}
       <nav className="menu">
         <Link to="/">Início</Link>
         <Link to="/planner">Planner</Link>
         <Link to="/desempenho">Desempenho</Link>
         <Link to="/desafios">Desafios</Link>
+
+        {/* 👇 PERFIL SÓ LOGADO */}
+        {user && <Link to="/perfil">Perfil</Link>}
       </nav>
 
-      {/* USUÁRIO / LOGIN */}
       <div className="user">
         {user ? (
           <>
             <span className="bell">🔔</span>
-            <img src="https://i.pravatar.cc/40" alt="user" />
+
+            {/* 🔥 FOTO REAL SE FOR GOOGLE */}
+            <img
+              src={user.photo || "https://i.pravatar.cc/40"}
+              alt="user"
+            />
 
             <button className="logout-btn" onClick={handleLogout}>
               Sair

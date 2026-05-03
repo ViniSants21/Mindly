@@ -14,6 +14,7 @@ import Performance from "./components/Performance";
 import Challenges from "./components/Challenges";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 import "./App.css";
 
@@ -30,7 +31,7 @@ const Home = () => (
 
 function Layout() {
   const location = useLocation();
-  const noLayoutRoutes = ["/login"];
+  const noLayoutRoutes = ["/login", "/cadastro"];
   const hideLayout = noLayoutRoutes.includes(location.pathname);
 
   return (
@@ -40,7 +41,6 @@ function Layout() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        {/* 🔐 ROTAS PROTEGIDAS */}
         <Route
           path="/planner"
           element={
@@ -68,8 +68,8 @@ function Layout() {
           }
         />
 
-        {/* LOGIN */}
         <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Register />} />
       </Routes>
 
       {!hideLayout && <Footer />}

@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import lapis from "../assets/lapismindly.png";
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
-  const { login, loginWithGoogle } = useAuth();
+  const { register, loginWithGoogle } = useAuth();
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
 
     if (!email || !senha) {
@@ -19,7 +19,7 @@ export default function Login() {
       return;
     }
 
-    login(email);
+    register(email);
     navigate("/planner");
   };
 
@@ -28,17 +28,17 @@ export default function Login() {
       await loginWithGoogle();
       navigate("/planner");
     } catch {
-      alert("Erro ao logar com Google");
+      alert("Erro ao cadastrar com Google");
     }
   };
 
   return (
     <div className="login-container">
       <div className="login-left">
-        <h1>Já estuda com <br /> a gente?</h1>
-        <p>faça seu login e boa aula!</p>
+        <h1>Crie sua conta <br /> agora mesmo</h1>
+        <p>comece a estudar com a gente!</p>
 
-        <form className="login-form" onSubmit={handleLogin}>
+        <form className="login-form" onSubmit={handleRegister}>
           <label>E-mail:</label>
           <input
             type="email"
@@ -50,28 +50,26 @@ export default function Login() {
           <label>Senha:</label>
           <input
             type="password"
-            placeholder="Digite sua senha"
+            placeholder="Crie uma senha"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
 
-          <span className="forgot">esqueci minha senha</span>
-
           <button className="btn-primary" type="submit">
-            Entrar
+            Cadastrar
           </button>
 
           <button type="button" className="btn-google" onClick={handleGoogle}>
-            LOGAR COM GOOGLE
+            CADASTRAR COM GOOGLE
           </button>
 
           <p className="register">
-            Ainda não é cadastrado?{" "}
+            Já tem conta?{" "}
             <span
               style={{ cursor: "pointer", textDecoration: "underline" }}
-              onClick={() => navigate("/cadastro")}
+              onClick={() => navigate("/login")}
             >
-              Criar conta
+              Entrar
             </span>
           </p>
         </form>
