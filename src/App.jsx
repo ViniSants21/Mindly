@@ -12,6 +12,7 @@ import Contact from "./components/Contact";
 import Planner from "./components/Planner";
 import Performance from "./components/Performance";
 import Challenges from "./components/Challenges";
+import LearningPath from "./components/LearningPath";
 import Footer from "./components/Footer";
 
 import Login from "./components/Login";
@@ -75,6 +76,16 @@ function Layout() {
           element={
             <PrivateRoute>
               <Challenges />
+            </PrivateRoute>
+          }
+        />
+
+        {/* TRILHA (NOVA) */}
+        <Route
+          path="/trilha"
+          element={
+            <PrivateRoute>
+              <LearningPath />
             </PrivateRoute>
           }
         />

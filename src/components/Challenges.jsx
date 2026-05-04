@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function Challenges() {
-  const [ongoingChallenges] = useState([
+  const [ongoingChallenges, setOngoingChallenges] = useState([
     { id: 1, title: 'Matemática', description: 'Desafio e concentração de dados', badge: 'Em Andamento', progress: 60, icon: '📐' },
     { id: 2, title: 'Leitura Dinâmica', description: 'Ler e aprender com rapidez', badge: 'Em Andamento', progress: 40, icon: '📖' },
     { id: 3, title: 'Concentração total', description: 'Foque e mantenha a atenção', badge: 'Em Andamento', progress: 75, icon: '🎯' },
@@ -24,10 +24,16 @@ function Challenges() {
   const [activeGame, setActiveGame] = useState(null);
   const [answer, setAnswer] = useState("");
   const [message, setMessage] = useState("");
+  const modalRef = useRef(null);
 
   function checkAnswer(correct) {
   if (answer.toLowerCase() === correct) {
     setMessage("🎉 Acertou!!");
+
+    if (activeGame?.challengeId) {
+      updateProgress(activeGame.challengeId);
+    }
+
   } else {
     setMessage("❌ Errou!");
   }
@@ -35,6 +41,28 @@ function Challenges() {
   setTimeout(() => setMessage(""), 2000);
   setAnswer("");
 }
+
+function updateProgress(id) {
+  setOngoingChallenges((prev) =>
+    prev.map((challenge) => {
+      if (challenge.id === id) {
+        const newProgress = Math.min(challenge.progress + 15, 100);
+        return { ...challenge, progress: newProgress };
+      }
+      return challenge;
+    })
+  );
+}
+
+useEffect(() => {
+  if (activeGame && modalRef.current) {
+    modalRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
+}, [activeGame]);
+
     return (
       <section className="challenges">
         <div className="challenges-container">
@@ -63,7 +91,12 @@ function Challenges() {
                     </div>
                     <span className="progress-text">{challenge.progress}%</span>
                   </div>
-                  <button className="challenge-btn">Continuar</button>
+                  <button 
+                    className="challenge-btn" 
+                    onClick={() => setActiveGame({ id: 2, challengeId: challenge.id })}
+                  >
+                    Continuar
+                  </button>
                 </div>
               </div>
             ))}
@@ -119,7 +152,7 @@ function Challenges() {
       </div>
 
       {activeGame && (
-  <div className="game-overlay">
+  <div className="game-overlay" ref={modalRef}>
   <div className="game-modal">
 
     <button className="close-btn" onClick={() => setActiveGame(null)}>

@@ -8,8 +8,11 @@ export default function EditProfile() {
   const navigate = useNavigate();
 
   const [name, setName] = useState(user?.name || "");
+  const [username, setUsername] = useState(user?.username || "");
   const [email, setEmail] = useState(user?.email || "");
   const [photo, setPhoto] = useState(user?.photo || "");
+  const [bio, setBio] = useState(user?.bio || "");
+  const [birth, setBirth] = useState(user?.birth || "");
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -17,12 +20,14 @@ export default function EditProfile() {
     const updatedUser = {
       ...user,
       name,
+      username,
       email,
       photo,
+      bio,
+      birth,
     };
 
     localStorage.setItem("user", JSON.stringify(updatedUser));
-
     navigate("/perfil");
   };
 
@@ -52,17 +57,30 @@ export default function EditProfile() {
             value={photo}
             onChange={(e) => setPhoto(e.target.value)}
           />
+
+          <small>Use uma URL de imagem para personalizar seu avatar</small>
         </div>
 
         {/* FORM */}
         <form className="edit-form" onSubmit={handleSave}>
-          
+
+          {/* DADOS BÁSICOS */}
+          <h3>Informações básicas</h3>
+
           <label>Nome</label>
           <input
             type="text"
             placeholder="Seu nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+
+          <label>Username</label>
+          <input
+            type="text"
+            placeholder="@seuuser"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
 
           <label>E-mail</label>
@@ -73,8 +91,31 @@ export default function EditProfile() {
             onChange={(e) => setEmail(e.target.value)}
           />
 
+          {/* PERFIL */}
+          <h3>Perfil</h3>
+
+          <label>Bio</label>
+          <textarea
+            placeholder="Fale um pouco sobre você..."
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+          />
+
+          <label>Data de nascimento</label>
+          <input
+            type="date"
+            value={birth}
+            onChange={(e) => setBirth(e.target.value)}
+          />
+
+
+          {/* BOTÕES */}
           <div className="buttons">
-            <button type="button" className="cancel" onClick={() => navigate("/perfil")}>
+            <button
+              type="button"
+              className="cancel"
+              onClick={() => navigate("/perfil")}
+            >
               Cancelar
             </button>
 
@@ -85,7 +126,6 @@ export default function EditProfile() {
 
         </form>
       </div>
-
     </div>
   );
 }

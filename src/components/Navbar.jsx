@@ -56,6 +56,10 @@ function Navbar() {
           Desafios
         </NavLink>
 
+        <NavLink to="/trilha" className="nav-item">
+          Trilha
+        </NavLink>
+
         {/* 🔥 LINK ADMIN (CONDICIONAL) */}
         {user?.role === "admin" && (
           <NavLink
