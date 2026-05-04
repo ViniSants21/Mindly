@@ -5,9 +5,12 @@ import { signInWithPopup } from "firebase/auth";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
-  );
+  // APENAS PARA TESTE (Depois você volta ao original)
+const [user, setUser] = useState({
+  email: "luislindo@gmail.com",
+  name: "Luis Admin",
+  role: "admin"
+});
 
   const login = (email) => {
     const userData = { email };
@@ -21,17 +24,25 @@ export function AuthProvider({ children }) {
     setUser(userData);
   };
 
-  // 🔥 LOGIN COM GOOGLE REAL
+  // 🔥 LOGIN COM GOOGLE REAL (Ajustado para seu Admin)
   const loginWithGoogle = async () => {
-    const result = await signInWithPopup(auth, provider);
-    const userData = {
-      email: result.user.email,
-      name: result.user.displayName,
-      photo: result.user.photoURL,
-    };
+    try {
+      const result = await signInWithPopup(auth, provider);
+      
+      // Aqui criamos o objeto do usuário
+      const userData = {
+        email: result.user.email,
+        name: result.user.displayName,
+        photo: result.user.photoURL,
+        // 🔥 REGRA DE ADMIN: Se for o seu e-mail, ele ganha o cargo de admin
+        role: result.user.email === "vitoraugusto1079@gmail.com" ? "admin" : "user"
+      };
 
-    localStorage.setItem("user", JSON.stringify(userData));
-    setUser(userData);
+      localStorage.setItem("user", JSON.stringify(userData));
+      setUser(userData);
+    } catch (error) {
+      console.error("Erro ao logar:", error);
+    }
   };
 
   const logout = () => {

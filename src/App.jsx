@@ -17,7 +17,7 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
-import AdminProfile from "./components/AdminProfile"; // 🔥 NOVO
+import Admin from "./components/Admin"; // 🔥 NOVO
 import EditProfile from "./components/EditProfile";
 
 import "./App.css";
@@ -84,7 +84,7 @@ function Layout() {
           path="/perfil"
           element={
             <PrivateRoute>
-              {user?.role === "admin" ? <AdminProfile /> : <Profile />}
+              {user?.role === "admin" ? <Admin /> : <Profile />}
             </PrivateRoute>
           }
         />
@@ -95,7 +95,7 @@ function Layout() {
           element={
             <PrivateRoute>
               {user?.role === "admin" ? (
-                <AdminProfile />
+                <Admin />
               ) : (
                 <Profile />
               )}

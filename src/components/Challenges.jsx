@@ -21,9 +21,24 @@ function Challenges() {
     { id: 3, title: 'Adivinha com rimas', description: 'Adivinhe as palavras através de rimas criativas e melhore seu conhecimento' }
   ]);
 
-  return (
-    <section className="challenges">
-      <div className="challenges-container">
+  const [activeGame, setActiveGame] = useState(null);
+  const [answer, setAnswer] = useState("");
+  const [message, setMessage] = useState("");
+
+  function checkAnswer(correct) {
+  if (answer.toLowerCase() === correct) {
+    setMessage("🎉 Acertou!!");
+  } else {
+    setMessage("❌ Errou!");
+  }
+
+  setTimeout(() => setMessage(""), 2000);
+  setAnswer("");
+}
+    return (
+      <section className="challenges">
+        <div className="challenges-container">
+
         
         {/* DESAFIOS EM ANDAMENTO */}
         <div className="challenges-section">
@@ -93,13 +108,85 @@ function Challenges() {
               <div key={game.id} className="game-card">
                 <h3>{game.title}</h3>
                 <p>{game.description}</p>
-                <button className="game-btn">Focar</button>
+                <button className="game-btn" onClick={() => setActiveGame(game)}>
+                  Focar
+                </button>
               </div>
             ))}
           </div>
         </div>
 
       </div>
+
+      {activeGame && (
+  <div className="game-overlay">
+  <div className="game-modal">
+
+    <button className="close-btn" onClick={() => setActiveGame(null)}>
+      ✕
+    </button>
+
+    <div className="modal-content">
+
+        {activeGame.id === 1 && (
+          <>
+            <h2>Adivinha com letras</h2>
+            <p>Descubra a palavra secreta.</p>
+            <div className="hint">Fruta vermelha com 6 letras</div>
+
+            <input
+              placeholder="Sua resposta"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+            />
+
+            <button className="submit-btn" onClick={() => checkAnswer("morango")}>
+              Enviar
+            </button>
+          </>
+        )}
+
+        {activeGame.id === 2 && (
+          <>
+            <h2>Charada matemática</h2>
+            <p>20 passageiros x 3 viagens = ?</p>
+
+            <input
+              placeholder="Sua resposta"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+            />
+
+            <button className="submit-btn" onClick={() => checkAnswer("60")}>
+              Enviar
+            </button>
+          </>
+        )}
+
+        {activeGame.id === 3 && (
+          <>
+            <h2>Adivinha com rimas</h2>
+            <p>Tem asas mas não voa, tem bico mas não bica.</p>
+            <div className="hint">Você usa para escrever</div>
+
+            <input
+              placeholder="Sua resposta"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+            />
+
+            <button className="submit-btn" onClick={() => checkAnswer("caneta")}>
+              Enviar
+            </button>
+          </>
+        )}
+
+        {message && <div className="game-message">{message}</div>}
+
+      </div>
+    </div>
+  </div>
+)}
     </section>
   );
 }

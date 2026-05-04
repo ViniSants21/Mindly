@@ -11,6 +11,7 @@ function Navbar() {
 
   const handleLogout = () => {
     logout();
+    setOpen(false);
     navigate("/login");
   };
 
@@ -28,7 +29,6 @@ function Navbar() {
 
   return (
     <header className="navbar">
-
       {/* LOGO */}
       <NavLink to="/" className="logo">
         <img
@@ -55,6 +55,17 @@ function Navbar() {
         <NavLink to="/desafios" className="nav-item">
           Desafios
         </NavLink>
+
+        {/* 🔥 LINK ADMIN (CONDICIONAL) */}
+        {user?.role === "admin" && (
+          <NavLink
+            to="/admin"
+            className="nav-item"
+            style={{ color: "#ffcc00", fontWeight: "bold" }}
+          >
+            Painel Admin
+          </NavLink>
+        )}
       </nav>
 
       {/* USER */}
@@ -78,11 +89,21 @@ function Navbar() {
                   {user.name || user.email}
                 </p>
 
-                <button onClick={() => navigate("/perfil")}>
+                <button
+                  onClick={() => {
+                    navigate("/perfil");
+                    setOpen(false);
+                  }}
+                >
                   Perfil
                 </button>
 
-                <button onClick={() => navigate("/editar-perfil")}>
+                <button
+                  onClick={() => {
+                    navigate("/editar-perfil");
+                    setOpen(false);
+                  }}
+                >
                   Editar perfil
                 </button>
 
@@ -101,7 +122,6 @@ function Navbar() {
           </button>
         )}
       </div>
-
     </header>
   );
 }
